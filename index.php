@@ -35,8 +35,19 @@
     $dNac= htmlspecialchars(trim(strip_tags($_REQUEST['dNac'])), ENT_QUOTES, "ISO-8859-1");
     if ($dNac == "")   
         print "<p>O campo data de nacemento está baleiro.</p>";
-    else
-        print "<p>O valor recibido do campo data de nacemento é: $dNac</p>";
+    else{
+        $partes_data=explode("/",$dNac);
+        if (count($partes_data)==3) {
+            if (checkdate($partes_data[1],$partes_data[0],$partes_data[2])) {
+                print "<p>O valor recibido do campo data de nacemento é: $dNac</p>";
+            }else{    
+                print "<p>A data non é válida</p>";
+            }
+        }else{
+            print "<p>A data non é válida</p>";
+        }
+    }
+
 
     $email=htmlspecialchars(trim(strip_tags(($_REQUEST['email']))), ENT_QUOTES, "ISO-8859-1");
     if ($email == "")
