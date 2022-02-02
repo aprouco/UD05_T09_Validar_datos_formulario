@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <form action="index.php" enctype="multipart/form-data" method="post">
+        <p>Nome completo: <input type="text" name="nomeCompleto" /></p>
+        <p>Nome de usuario: <input type="text" name="nomeUsr" /></p>
+        <p>Contrasinal: <input type="text" name="contrasinal" />(*) <em>O campo contrasinal precisa 6 caracteres como mínimo</em> </p>
+        <p>Idade: <input type="text" name="idade" /> <em>A idade ten que estar entre 0 e 130 anos </em> </p>
+        <p>Data de nacemento: <input type="text" name="dNac" /><em>dd/mm/aaaa</em></p>
+        <p>Email: <input type="text" name="email" /></p>
+        <p>URL da páxina persoal: <input type="text" name="url" /></p>
+        <p>IP do equipo: <input type="text" name="ip" /></p>
+        <p>Descrición dos hobbies:<textarea name="hobbies" cols="20" rows="4"></textarea></p>
+        <p>Recibir información: <input type="checkbox" name="rcbInfo" /></p>
+        <p>Home <input type="radio" name="sexo" value="home">
+        Muller<input type="radio" name="sexo" value="muller"></p>
+        <p>Linguas estranxeiras: <select name="linguasEs[]" size="5" multiple="multiple">
+            <option selected="selected">Inglés</option>
+            <option>Portugués</option>
+            <option>Francés</option>
+            <option>Italiano</option>
+            <option>Alemán</option>
+        </select></p>
+        <p>Currículo: <input type="file" name="curriculo" /></p>
+        <p><input type="submit" value="submit" /></p>
+    </form>
+</body>
+</html>
