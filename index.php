@@ -18,7 +18,7 @@
     if ($contrasinal == "")
         print "<p>O campo contrasinal está baleiro. É un campo obrigatorio.</p>";
     elseif (strlen($contrasinal)<6) {
-        print "<p>O contrasinal non ten o mínimo de 6 caracteres.</p>"
+        print "<p>O contrasinal non ten o mínimo de 6 caracteres.</p>";
     }else {
         print "<p>O valor recibido do campo contrasinal é: $contrasinal</p>";   
     }
@@ -26,9 +26,12 @@
     $idade= htmlspecialchars(trim(strip_tags($_REQUEST['idade'])), ENT_QUOTES, "ISO-8859-1");
     if ($idade == "")
         print "<p>O campo idade está baleiro.</p>";
-    else
+    elseif ((int)$idade<0 || (int)$idade>130) {
+        print "<p>O valor recibido do campo idade non está entre 0 e 130.</p>";
+    }else {
         print "<p>O valor recibido do campo idade é: $idade</p>";
-
+    }
+        
     $dNac= htmlspecialchars(trim(strip_tags($_REQUEST['dNac'])), ENT_QUOTES, "ISO-8859-1");
     if ($dNac == "")   
         print "<p>O campo data de nacemento está baleiro.</p>";
