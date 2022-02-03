@@ -69,8 +69,11 @@
     $ip= htmlspecialchars(trim(strip_tags($_REQUEST['ip'])), ENT_QUOTES, "ISO-8859-1");
     if ($ip == "")
         print "<p>O campo IP do equipo está baleiro.</p>";
-    else
+    elseif (filter_var($ip,FILTER_VALIDATE_IP)) {
         print "<p>O valor recibido do campo IP do equipo é: $ip</p>";
+    }else {
+        print "<p>O formato da IP non é válido.</p>";
+    }
 
     $hobbies= htmlspecialchars(trim(strip_tags($_REQUEST['hobbies'])), ENT_QUOTES, "ISO-8859-1");
     if ($hobbies == "")
