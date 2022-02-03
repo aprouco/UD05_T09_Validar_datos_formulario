@@ -1,6 +1,6 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8');
-    echo "<pre>"; print_r($_REQUEST); echo "</pre>";
+    #echo "<pre>"; print_r($_REQUEST); echo "</pre>";
 
     $nomeCompleto= htmlspecialchars(trim(strip_tags($_REQUEST['nomeCompleto'])), ENT_QUOTES, "ISO-8859-1");
     if ($nomeCompleto == "")
@@ -48,12 +48,14 @@
         }
     }
 
-
     $email=htmlspecialchars(trim(strip_tags(($_REQUEST['email']))), ENT_QUOTES, "ISO-8859-1");
     if ($email == "")
         print "<p>O campo email está baleiro. É un campo obrigatorio.</p>";
-    else
+    else if (filter_var($email,FILTER_VALIDATE_EMAIL)) {
         print "<p>O valor recibido do campo email é: $email</p>";
+    }else {
+        print "<p>O formato do email no é válido.</p>";
+    }
 
     $url= htmlspecialchars(trim(strip_tags($_REQUEST['url'])), ENT_QUOTES, "ISO-8859-1");
     if ($url == "")
@@ -77,7 +79,7 @@
         ? htmlspecialchars(trim(strip_tags($_REQUEST['rcbInfo'])), ENT_QUOTES, "ISO-8859-1")
         : "";
     if ($rcbInfo == "")
-        print "<>Non se utilizou o control recibir información./p>";
+        print "<p>Non se utilizou o control recibir información.</p>";
     else
         print "<p>O valor recibido do control recibir información é: $rcbInfo</p>";
 
