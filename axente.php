@@ -54,14 +54,17 @@
     else if (filter_var($email,FILTER_VALIDATE_EMAIL)) {
         print "<p>O valor recibido do campo email é: $email</p>";
     }else {
-        print "<p>O formato do email no é válido.</p>";
+        print "<p>O formato do email non é válido.</p>";
     }
 
     $url= htmlspecialchars(trim(strip_tags($_REQUEST['url'])), ENT_QUOTES, "ISO-8859-1");
     if ($url == "")
         print "<p>O campo URL da páxina persoal está baleiro.</p>";
-    else
+    else if (filter_var($url,FILTER_VALIDATE_URL)) {
         print "<p>O valor recibido do campo URL da páxina persoal é: $url</p>";
+    }else {
+        print "<p>O formato da url non é válido.</p>";
+    }
     
     $ip= htmlspecialchars(trim(strip_tags($_REQUEST['ip'])), ENT_QUOTES, "ISO-8859-1");
     if ($ip == "")
